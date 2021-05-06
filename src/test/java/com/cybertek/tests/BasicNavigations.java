@@ -13,6 +13,8 @@ public class BasicNavigations {
             //3- get the page for Tesla.com
             driver.get("https://www.tesla.com");
             System.out.println("Current title: " + driver.getTitle());
+           String currentUrl= driver.getCurrentUrl();
+            System.out.println("currentUrl = " + currentUrl);
 
             //putting 3 seconds of wait/ stops the code for 3 sec
             Thread.sleep(3000);
@@ -34,6 +36,15 @@ public class BasicNavigations {
             driver.navigate().to("https://www.google.com");
 
             System.out.println("Current title: " + driver.getTitle());
+            currentUrl = driver.getCurrentUrl();
+            System.out.println("currentUrl = " + currentUrl);
+
+            //this line will basically maximize the browser size
+            driver.manage().window().fullscreen();
+            //this method will close the currently opened browser
+            //it will only close 1 browser
+            driver.close();
+
 
 
 
