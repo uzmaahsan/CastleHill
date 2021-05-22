@@ -14,6 +14,7 @@ public class P4_GoogleSearch {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
+
         // 2- Go to Google browser
         driver.get("https://google.com");
 

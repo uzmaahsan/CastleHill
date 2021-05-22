@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class T2_ZeroBankAttributeVerification {
 
     public static void main(String[] args) {
@@ -20,12 +23,15 @@ public class T2_ZeroBankAttributeVerification {
 
         //LOCATE THE LINK AND STORE INSIDE OF WebElement
 
-        WebElement zeroBankLink = driver.findElement(By.className("brand"));
+//        WebElement zeroBankLink = driver.findElement(By.className("brand"));
+        List<WebElement> elements = new ArrayList<>();
+        elements.add(driver.findElement(By.className("brand")));
 
         //3. Verify link text from top left:
         //Expected: “Zero Bank”
         String expectedLinkText = "Zero Bank";
-        String actualLinkText = zeroBankLink.getText();
+
+        String actualLinkText =elements.get(0).getText();
         //driver.findElement(By.className("brand")).getText();
 
         if (actualLinkText.equals(expectedLinkText)){
@@ -38,7 +44,7 @@ public class T2_ZeroBankAttributeVerification {
         //Expected: “index.html”
         String expectedInHrefValue = "index.html";
 
-        String actualHrefValue = zeroBankLink.getAttribute("href");
+        String actualHrefValue = elements.get(0).getAttribute("href");
 
         if (actualHrefValue.contains(expectedInHrefValue)){
             System.out.println("HREF attribute value verification PASSED!");
