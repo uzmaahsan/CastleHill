@@ -38,6 +38,7 @@
           <option value="http://cxf.apache.org/schemas/" />
           <option value="http://practice.cybertekschool.com" />
           <option value="http://zero.webappsecurity.com" />
+          <option value="http://secure.smartbearsoftware.com" />
         </list>
       </option>
     </inspection_tool>
