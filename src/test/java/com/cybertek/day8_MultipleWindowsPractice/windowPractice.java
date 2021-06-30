@@ -1,7 +1,7 @@
 package com.cybertek.day8_MultipleWindowsPractice;
 
 
-import com.cybertek.tests.UtilsClass.WebDriverFactory;
+import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -23,11 +23,11 @@ public class windowPractice {
     @Test
     public void multiple_window_test() throws InterruptedException {
             Thread.sleep(1000);
-            ((JavascriptExecutor) driver).executeScript("window.open('http://google.com','_blank');");
+            ((JavascriptExecutor) driver).executeScript("window.open('https://google.com','_blank');");
             Thread.sleep(1000);
-            ((JavascriptExecutor) driver).executeScript("window.open('http://etsy.com','_blank');");
+            ((JavascriptExecutor) driver).executeScript("window.open('https://etsy.com','_blank');");
             Thread.sleep(1000);
-            ((JavascriptExecutor) driver).executeScript("window.open('http://facebook.com','_blank');");
+            ((JavascriptExecutor) driver).executeScript("window.open('https://facebook.com','_blank');");
 
             for (String each : driver.getWindowHandles()) {
                 driver.switchTo().window(each);

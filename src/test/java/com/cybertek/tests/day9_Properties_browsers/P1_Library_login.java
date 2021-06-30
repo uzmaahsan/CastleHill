@@ -1,6 +1,5 @@
 package com.cybertek.tests.day9_Properties_browsers;
 
-import com.cybertek.tests.UtilsClass.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 public class P1_Library_login {
 
     WebDriver driver;
+    private com.cybertek.utilities.WebDriverFactory WebDriverFactory;
+
     @BeforeMethod
     public void setupMethod(){
         driver = WebDriverFactory.getDriver("chrome");
