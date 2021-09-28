@@ -23,21 +23,31 @@ public class moneyGaming {
          */
     @Test
     public  void Task1(){
-        //open Chrome Browser
-        WebDriver driver = WebDriverFactory.getDriver("Chrome");
+
+        // Open Chrome Browser
+        WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.get("https://moneygaming.qa.gameaccount.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        WebElement joinButton = driver.findElement(By.xpath("//a[.=\"Join Now!\"]"));
+        WebElement joinButton = driver.findElement(By.xpath("//a[@class='newUser green']"));
         joinButton.click();
-        WebElement titleName = driver.findElement(By.xpath("//select[@name='map(title)']"));
-        Select titleDropDown = new Select(titleName);
+        WebElement titleElement = driver.findElement(By.id("title"));
+        Select titleDropDown = new Select(titleElement);
         titleDropDown.selectByVisibleText("Mr");
         String expectedTitle = "Mr";
         String actualTitle = titleDropDown.getFirstSelectedOption().getText();
-        System.out.println("actualTitle = " + actualTitle);
-        Assert.assertEquals(expectedTitle, actualTitle);
-
+        Assert.assertEquals(actualTitle,expectedTitle,"verify the title");
+        WebElement firstName = driver.findElement(By.xpath("//input[@name='map(firstName)']"));
+        WebElement lastName = driver.findElement(By.xpath("//input[@name='map(lastName)']"));
+        firstName.sendKeys("Uzma");
+        lastName.sendKeys("Ahsan");
+        WebElement termBox = driver.findElement(By.xpath("//input[@name = 'map(terms)']"));
+        termBox.click();
+        WebElement submitButton = driver.findElement(By.xpath("//input[@value = 'Join Now!']"));
+        submitButton.click();
+        String expectedError = "This field is required";
+        String actualError = driver.findElement(By.xpath("//label[@for='dob']")).getText();
+        Assert.assertEquals(actualError,expectedError,"verify DOB error message");
 
 
     }
