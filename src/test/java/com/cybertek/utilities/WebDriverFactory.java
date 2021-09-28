@@ -24,11 +24,10 @@ public class WebDriverFactory {
             driver.manage().window().maximize();
             // System.out.println("fail");
             return driver;
-        } else {
+        }else {
             System.out.println("Given browser type foes not exist. Driver = null");
             return null;
         }
     }
 }
-
 

@@ -1,7 +1,9 @@
 package com.cybertek.tests.day8_windows_javafaker;
 
 import com.cybertek.utilities.WebDriverFactory;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -30,7 +32,25 @@ public class windowPractice {
         driver.get("https://www.amazon.com");
     }
     @Test
-    public void multiWindows(){
+    public void multiWindows() throws InterruptedException {
+        Thread.sleep(1000);
+        ((JavascriptExecutor) driver).executeScript("window.open('http://google.com','_blank');");
+        Thread.sleep(1000);
+        ((JavascriptExecutor) driver).executeScript("window.open('http://etsy.com','_blank');");
+        Thread.sleep(1000);
+        ((JavascriptExecutor) driver).executeScript("window.open('http://facebook.com','_blank');");
+        for (String each : driver.getWindowHandles()) {
+            driver.switchTo().window(each);
+            System.out.println("Title in current page " + driver.getTitle());
+            if(driver.getTitle().contains("Etsy")){
+                Assert.assertTrue(driver.getTitle().contains("Etsy"));
+                break;
+
+        }
+
+        }
+
+
 
     }
 }

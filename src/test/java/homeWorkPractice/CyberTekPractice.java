@@ -13,6 +13,7 @@ public class CyberTekPractice {
 
 
             driver.get("http://practice.cybertekschool.com/");
+            driver.manage().window().maximize();
             String url = driver.getCurrentUrl();
             String title = driver.getTitle();
 
